@@ -1,0 +1,37 @@
+.ctg{
+    width: 300px;
+    background: #333;
+    height: 100vh;
+    border-right: 1px solid orangered;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    h2{
+        text-align: center;
+        padding-bottom: 20px;
+        text-transform: uppercase;
+        border-bottom: 1px solid beige;
+        margin-bottom: 0;
+    }
+    &-list{
+        margin: 0;
+        list-style: none;
+        padding: 0;
+        &__item{
+            width: 100%;
+            padding: 20px 0 20px 25px;
+            border-bottom: 1px solid beige;
+            transition: .2s;
+            text-transform: uppercase;
+            cursor: pointer;
+            &.active{
+                padding-left: 40px;
+                color: orangered;
+                font-weight: bold;
+                background: beige;
+                border-color: orangered;
+            }
+        }
+    }
+}

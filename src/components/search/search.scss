@@ -1,0 +1,22 @@
+.search{
+    width: 100%;
+    padding: 20px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid beige;
+    input{
+        width: 80%;
+        padding: 15px;
+        border: 1px solid #444;
+        color: beige;
+        background: transparent;
+        border-radius: 5px;
+        font-size: 1.5rem;
+        outline: none;
+        transition: .2s;
+        &:focus{
+            border-color: beige;
+        }
+    }
+}

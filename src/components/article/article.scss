@@ -1,0 +1,97 @@
+.through{
+    h3, p{
+        text-decoration: line-through;
+        opacity: .3;
+    }
+}
+.main-list__item{
+    padding: 15px;
+    border-bottom: 1px solid beige;
+    position: relative;
+    display: flex;
+    h3{
+        margin: 5px 0;
+        font-size: 1.5rem;
+    }
+    p{
+        margin: 0;
+    }
+    &:hover &-tools{
+        display: flex;
+    }
+    &-title{
+        display: flex;
+        align-items: center;
+        label{
+            display: block;
+            position: relative;
+            padding-left: 35px;
+            margin-bottom: 20px;
+            cursor: pointer;
+            font-size: 22px;
+            user-select: none;
+            margin-right: 10px;
+            input{
+                position: absolute;
+                opacity: 0;
+                cursor: pointer;
+                height: 0;
+                width: 0;
+            }
+            .checkmark{
+                position: absolute;
+                top: 0;
+                left: 0;
+                height: 25px;
+                width: 25px;
+                border-radius: 5px;
+                background-color: #eee;
+                &:after {
+                    content: "";
+                    position: absolute;
+                    display: none;
+                    left: 9px;
+                    top: 3px;
+                    width: 7px;
+                    height: 15px;
+                    border: solid white;
+                    border-width: 0 3px 3px 0;
+                    transform: rotate(45deg);
+                }
+            }
+            &:hover input ~ .checkmark {
+                background-color: #ccc;
+            }
+            input:checked ~ .checkmark {
+                background-color: orangered;
+            }
+            input:checked ~ .checkmark:after {
+                display: block;
+            }
+        }
+    }
+    &-tools{
+        display: none;
+        position: absolute;
+        top: 0;
+        right: 0;
+        transition: .2s;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        width: 300px;
+        background: linear-gradient(to right, transparent, #222 15%);
+        button{
+            background: transparent;
+            border: none;
+            color: #fff;
+            font-size: 20px;
+            margin: 0 10px;
+            cursor: pointer;
+            padding: 7px;
+        }
+    }
+}
+.active{
+    color: orangered !important;
+}
