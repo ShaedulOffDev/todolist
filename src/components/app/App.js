@@ -20,7 +20,13 @@ class App extends Component {
       ],
       term: '',
       filter: 'all',
+      showCtg: false,
     }
+  }
+  showCtg = () => {
+    this.setState(({showCtg}) => ({
+      showCtg: !showCtg
+    }))
   }
   done = (id, e) => {
     this.setState(({data}) => ({
@@ -77,11 +83,11 @@ class App extends Component {
   }
  
   render(){
-    const {data, filter, term} = this.state
+    const {data, filter, term, showCtg} = this.state
     const visibleData = this.filterHandler(this.searchHandler(data, term), filter)
     return (
       <div style={{display: 'flex'}}>
-        <Ctg filter={filter} filterUpdate={this.filterUpdate}/>
+        <Ctg isShow={showCtg} showCtg={this.showCtg} data={data} filter={filter} filterUpdate={this.filterUpdate}/>
         <Main 
         data={visibleData} 
         termUpdate={this.termUpdate}
@@ -90,6 +96,7 @@ class App extends Component {
         addArticle={this.addArticle}
         deleteArticle={this.deleteArticle}
         done={this.done}
+        isShow={showCtg}
         />
       </div>
     )

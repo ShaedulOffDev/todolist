@@ -5,10 +5,16 @@ html{
 body{
   margin: 0;
   background: #222;
+  overflow-x: hidden;
   color: beige;
   padding-left: 300px;
   font-family: "Poppins", sans-serif;
 }
 *, *::after, *::before{
   box-sizing: inherit;
+}
+@media (max-width: 1024.5px){
+  body{
+    padding: 0;
+  }   
 }

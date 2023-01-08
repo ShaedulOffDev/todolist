@@ -8,6 +8,7 @@
     padding: 15px;
     border-bottom: 1px solid beige;
     position: relative;
+    flex-direction: column;
     display: flex;
     h3{
         margin: 5px 0;
@@ -94,4 +95,14 @@
 }
 .active{
     color: orangered !important;
+}
+@media (max-width: 1024.5px) {
+    .main-list__item{
+        &-tools{
+            position: static;
+            display: flex;
+            margin-left: auto;
+            width: auto;
+        }
+    }   
 }

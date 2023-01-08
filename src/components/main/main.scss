@@ -1,5 +1,9 @@
+.tr{
+    transform: translateX(300px);
+}
 .main{
     width: 100%;
+    transition: .2s;
     &-title{
         display: flex;
         justify-content: space-between;

@@ -5,7 +5,7 @@ import Search from '../search/search'
 
 const Main = (props) => {
   return (
-    <div className='main'>
+    <div className={`main ${props.isShow ? 'tr' : ''}`}>
       <div className="main-title">
         <h1>{props.filter}</h1>
         <AddArticle addArticle={props.addArticle}/>
