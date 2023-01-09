@@ -1,60 +1,49 @@
-import { Component } from 'react'
+import { useState } from 'react'
 import './addArticle.scss'
 
-class AddArticle extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            modal: false,
-            title: '',
-            text: '',
-        }
-    }
-    addArticle = (e) => {
+const AddArticle = (props) => {
+    const [modal, setModal] = useState(false)
+    const [title, setTitle] = useState('')
+    const [text, setText] = useState('')
+
+    const addArticle = (e) => {
         e.preventDefault()
-        if(this.state.title !== ''){
-            this.props.addArticle({title: this.state.title, text: this.state.text})
-            this.setState(({
-                modal: false,
-                title: '',
-                text: '',
-            }))
+        if(title !== '' && text !== ''){
+            props.addArticle({title: title, text: text})
+            setModal(false)
+            setText('')
+            setTitle('')
         }else{
             alert('Area empty. Please enter a text!')
         }
     }
-    modalShow = () => {
-        this.setState(({modal: true}))
+    const modalShow = () => {
+        setModal(true)
     }
-    modalHide = (e) => {
+    const modalHide = (e) => {
         e.preventDefault()
-        this.setState(({modal: false}))
+        setModal(false)
     }
-    inputHandler = (e) => {
-        this.setState({
-            [e.target.name]: e.target.value
-        })
+    const inputHandler = (e) => {
+        e.target.name === 'title'? setTitle(e.target.value) : setText(e.target.value)
     }
 
-    render(){
-        const {modal} = this.state
-        return (
-            <>
-                <button onClick={this.modalShow} className='btn'><i className='fa fa-plus'></i> Add Article</button>
-                <div className={`modal ${modal ? 'show' : ''}`}>
-                    <form onSubmit={e => this.addArticle(e)}>
-                        <h4>Add new article</h4>
-                        <input value={this.state.title} onChange={e => this.inputHandler(e)} type="text" name="title" />
-                        <textarea value={this.state.text} onChange={e => this.inputHandler(e)} name="text" cols="30" rows="10"></textarea>
-                        <div>
-                            <button type='submit' onClick={e => this.addArticle(e)}><i className='fa fa-plus'></i> Add</button>
-                            <button onClick={(e) => this.modalHide(e)}><i className='fa fa-times'></i> Close</button>
-                        </div>
-                    </form>
-                </div>
-            </>
-        )
-    }
+    return (
+        <>
+            <button onClick={modalShow} className='btn'><i className='fa fa-plus'></i> Add Article</button>
+            <div className={`modal ${modal ? 'show' : ''}`}>
+                <form onSubmit={e => addArticle(e)}>
+                    <h4>Add new article</h4>
+                    <input value={title} onChange={e => inputHandler(e)} type="text" name="title" />
+                    <textarea value={text} onChange={e => inputHandler(e)} name="text" cols="30" rows="10"></textarea>
+                    <div>
+                        <button type='submit' onClick={e => addArticle(e)}><i className='fa fa-plus'></i> Add</button>
+                        <button onClick={(e) => modalHide(e)}><i className='fa fa-times'></i> Close</button>
+                    </div>
+                </form>
+            </div>
+        </>
+    )
 }
 
 export default AddArticle
